@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hakkımızda - Yapı Kredi</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <style>
+    /* Genel stiller */
+    body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 1459px;
+            min-height: 100vh;
+            position: relative;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            background-color: #f2f2f2;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .left-section, .right-section {
+            width: calc(50% - 20px);
+            padding: 20px;
+            background-color: #fff;
+            box-sizing: border-box;
+        }
+
+        .bottom-section {
+            width: 100%;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            box-sizing: border-box;
+        }
+
+        .box {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .box h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .box p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #ffffff;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 30px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            position: relative;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: rgb(0, 37, 220);
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+
+        nav ul li .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #ffffff;
+            padding: 10px 0;
+            white-space: nowrap;
+            border: 1px solid #fff;
+            z-index: 1000;
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        nav ul li .dropdown-menu li {
+            display: inline-block;
+        }
+
+        nav ul li .dropdown-menu li a {
+            padding: 10px 20px;
+        }
+
+        nav ul li:hover .dropdown-menu {
+            display: block;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-right .box, .header-right .notification {
+            margin-left: 20px;
+        }
+
+        .header-right .box a, .header-right .notification a {
+            color: rgb(52, 1, 255);
+            text-decoration: none;
+            padding: 10px 15px;
+            background-color: #ffffff;
+            border-radius: 5px;
+        }
+
+        .header-right .notification a img {
+            height: 25px;
+            width: 25px;
+        }
+
+        .main-content {
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+    <header>
+        <header>
+            <div class="header-container">
+                <div class="logo">
+                    <img src="https://assets.yapikredi.com.tr/WebSite/_assets/img/sekseninci-yila-ozel-logo.svg" alt="Yapı kredi Logosu"> 
+                </div>
+                <nav>
+                    <ul>
+                        <li class="dropdown">
+                            <a href="#">Kendim İçin</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="https://www.yapikredi.com.tr/bireysel-bankacilik/krediler/">Krediler</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/bireysel-bankacilik/kartlar/">Kartlar</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/bireysel-bankacilik/mevduat-urunleri/">Mevduat</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/bireysel-bankacilik/yatirim-urunleri/">Yatırım</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/bireysel-bankacilik/odemeler-ve-hizmetler/">Ödemeler ve Hizmetler</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/bireysel-bankacilik/sigorta-ve-emeklilik/">Sigorta ve Emeklilik</a></li>
+                   
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#">İşim İçin</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="https://www.yapikredi.com.tr/isletme/">İşletme</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/kobi/">KOBİ</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/ticari/">Ticari</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/kurumsal/">Kurumsal</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/isletme/ticari-kartlar/">Ticari Kartlar</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/kobi/krediler/kobi-kredileri">Krediler</a></li>
+                        
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="header-right">
+                    <div class="notification"><a href="#"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTx289HkWzqPct9T_P0yXRkEzFG0oaH0vnzGEuRnTV3onoHJq24RSZddpc_cOVGY9YOfUE&usqp=CAU" alt="Bildirimler"></a></div>
+                    <div class="box"><a href="index.html">AnaSayfa</a></div>
+                    <div class="box"><a href="giriş.html">Giriş</a></div>
+                    <div class="box"><a href="kampanyalar.html">Kampanyalar</a></div>
+                    <div class="box"><a href="hakkımızda.html">Hakkımızda</a></div>
+                    <div class="box"><a href="iletişim.html">İletişim</a></div>
+                </div>
+            </div>
+        </header>
+
+    <main>
+        <div class="content">
+            <h1>İletişim</h1>
+            <div class="contact-info">
+                <p><strong>Şirket Ünvanı:</strong> Yapı ve Kredi Bankası A.Ş.</p>
+                <p><strong>Sorumlu Kişiler:</strong> Yapı ve Kredi Bankası A.Ş. Üst Yönetimi</p>
+                <p><strong>Genel Müdürlük Adresi:</strong> Yapı Kredi Plaza D Blok 34330 Levent - Beşiktaş – İstanbul</p>
+                <p><strong>Ticaret Sicili Müdürlüğü / Numarası:</strong> İstanbul / 32736</p>
+                <p><strong>Mersis Numarası:</strong> 0937002089200741</p>
+                <p><strong>Müşteri İletişim Merkezi Telefon No:</strong> 444 0 444 / 0850 222 0 444</p>
+                <p><strong>Yapı Kredi WhatsApp Telefon No:</strong> +90 850 222 0444</p>
+                <p><strong>Genel Müdürlük Telefon No:</strong> +90 (212) 339 70 00</p>
+                <p><strong>Bankacılık Üssü Telefon No:</strong> +90 (262) 647 10 00</p>
+                <p><strong>E-posta:</strong> Bize Yazın</p>
+                <p><strong>Web Sitesi:</strong> <a href="https://www.yapikredi.com.tr">www.yapikredi.com.tr</a></p>
+                <p><strong>Yapı Kredi Kayıtlı E-Posta (KEP) Adresi:</strong> yapikredi@yapikredi.hs02.kep.tr</p>
+                <p><strong>Yetkili Denetim Mercii:</strong> Bankacılık Düzenleme ve Denetleme Kurumu (BDDK)</p>
+                <p><strong>Posta Adresi:</strong> Büyükdere Caddesi No:106 Şerbetçi İş Merkezi Esentepe Şişli/İstanbul</p>
+                <p><strong>Telefon:</strong> (212) 214 50 00</p>
+                <p><strong>Faks:</strong> (212) 216 09 92</p>
+                <p><strong>Web Adresi:</strong> <a href="https://www.bddk.org.tr">www.bddk.org.tr</a></p>
+
+        </section>
+    </main>
+    
+</body>
+</html>

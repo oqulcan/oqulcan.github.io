@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yapı ve Kredi Web Sitesi</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        
+        /* Genel stiller */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 1459px;
+            min-height: 100vh;
+            position: relative;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            background-color: #f2f2f2;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .left-section, .right-section {
+            width: calc(50% - 20px);
+            padding: 20px;
+            background-color: #fff;
+            box-sizing: border-box;
+        }
+
+        .bottom-section {
+            width: 100%;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            box-sizing: border-box;
+        }
+
+        .box {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .box h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .box p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #ffffff;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 30px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            position: relative;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: rgb(0, 37, 220);
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+
+        nav ul li .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #ffffff;
+            padding: 10px 0;
+            white-space: nowrap;
+            border: 1px solid #fff;
+            z-index: 1000;
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        nav ul li .dropdown-menu li {
+            display: inline-block;
+        }
+
+        nav ul li .dropdown-menu li a {
+            padding: 10px 20px;
+        }
+
+        nav ul li:hover .dropdown-menu {
+            display: block;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-right .box, .header-right .notification {
+            margin-left: 20px;
+        }
+
+        .header-right .box a, .header-right .notification a {
+            color: rgb(52, 1, 255);
+            text-decoration: none;
+            padding: 10px 15px;
+            background-color: #ffffff;
+            border-radius: 5px;
+        }
+
+        .header-right .notification a img {
+            height: 25px;
+            width: 25px;
+        }
+
+        .main-content {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .banner-container {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            max-width: 1518px;
+            height: 640px;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .banner-container img {
+            width: 100%;
+            height: auto;
+            max-height: 640px;
+        }
+
+        .search-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -60%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .search-container input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .search-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #005bb5;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .search-container button:hover {
+            background-color: #004b99;
+        }
+        
+        /* Grid system for columns */
+        .cols-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 20px;
+            box-sizing: border-box;
+            max-width: 100%;
+        }
+
+        .col {
+            flex: 1 1 23%; /* Adjust width as needed */
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Adjustments for smaller screens */
+        @media (max-width: 768px) {
+            .col {
+                flex-basis: 45%; /* Two columns per row on smaller screens */
+            }
+        }
+
+        /* Clearfix for flexibility */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        /* Styling for the bottom section */
+        .bottom-section {
+            padding: 20px;
+            background-color: #f2f2f2;
+            margin-top: 20px;
+            clear: both;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .bottom-section .col {
+            width: calc(25% - 10px);
+            margin-right: 20px;
+            padding: 20px;
+            background-color: #fff;
+            box-sizing: border-box;
+        }
+
+        .bottom-section .col:last-child {
+            margin-right: 0;
+        }
+
+        @media (max-width: 1200px) {
+            .bottom-section .col {
+                width: calc(33.33% - 10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .bottom-section .col {
+                width: calc(50% - 10px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .bottom-section .col {
+                width: 100%;
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="https://assets.yapikredi.com.tr/WebSite/_assets/img/sekseninci-yila-ozel-logo.svg" alt="Yapı kredi Logosu">
+            </div>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="#">Kendim İçin</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://www.yapikredi.com.tr/bireysel-bankacilik/krediler/">Krediler</a></li>
+                            <li><a href="https://www.yapikredi.com.tr/bireysel-bankacilik/kartlar/">Kartlar</a></li>
+                            <li><a href="https://www.yapikredi.com.tr/bireysel-bankacilik/mevduat-urunleri/">Mevduat</a></li>
+                            <li><a href="https://www.yapikredi.com.tr/bireysel-bankacilik/yatirim-urunleri/">Yatırım</a></li>
+                            <li><a href="https://www.yapikredi.com.tr/bireysel-bankacilik/odemeler-ve-hizmetler/">Ödemeler ve Hizmetler</a></li>
+                            <li><a href="https://www.yapikredi.com.tr/bireysel-bankacilik/sigorta-ve-emeklilik/">Sigorta ve Emeklilik</a></li>
+               
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">İşim İçin</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://www.yapikredi.com.tr/isletme/">İşletme</a></li>
+                            <li><a href="https://www.yapikredi.com.tr/kobi/">KOBİ</a></li>
+                            <li><a href="https://www.yapikredi.com.tr/ticari/">Ticari</a></li>
+                            <li><a href="https://www.yapikredi.com.tr/kurumsal/">Kurumsal</a></li>
+                            <li><a href="https://www.yapikredi.com.tr/isletme/ticari-kartlar/">Ticari Kartlar</a></li>
+                            <li><a href="https://www.yapikredi.com.tr/kobi/krediler/kobi-kredileri">Krediler</a></li>
+                    
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header-right">
+                <div class="notification"><a href="#"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTx289HkWzqPct9T_P0yXRkEzFG0oaH0vnzGEuRnTV3onoHJq24RSZddpc_cOVGY9YOfUE&usqp=CAU" alt="Bildirimler"></a></div>
+                <div class="box"><a href="index.html">AnaSayfa</a></div>
+                <div class="box"><a href="giriş.html">Giriş</a></div>
+                <div class="box"><a href="kampanyalar.html">Kampanyalar</a></div>
+                <div class="box"><a href="hakkımızda.html">Hakkımızda</a></div>
+                <div class="box"><a href="iletişim.html">İletişim</a></div>
+                
+            </div>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="banner-container">
+            <img src="https://www.yapikredi.com.tr/medium/image/banner_69354/view?imgFormat=webp" alt="Banner Image">
+            <div class="search-container">
+                <input type="text" id="search" placeholder="Yapı ve Kredi Bankası'nda ara...">
+                <button type="submit">Ara</button>
+            </form>
+            <div id="searchResults" class="result"></div>
+            </div>
+        </div>
+
+        <div class="cols-container">
+            <div class="col">
+                <div class="box">
+                    <h2>Anında Başvuru</h2>
+                    <p>Tüm Başvuru İşlemleri</p> <a href="#">Hemen Başvur</a></p>
+                    <img src="https://assets.yapikredi.com.tr/WebSite/_assets_responsive/img/apply-now-bireysel-ihtiyac-kredisi-basvur.png" alt="Anında Başvuru">
+                </div>
+            </div>
+            <div class="col">
+                <div class="box">
+                    <h2>Kredi Kartı</h2>
+                    <p>Hemen Worldcard'a başvurun</p> <a href="#">Hemen Başvur</a></p>
+                    <img src="https://assets.yapikredi.com.tr/WebSite/_assets_responsive/img/main-page-kredi-karti-basvuru.png" alt="Kredi Kartı">
+                </div>
+            </div>
+            <div class="col">
+                <div class="box">
+                    <h2>Bireysel İhtiyaç Kredisi</h2>
+                    <p>Bireysel İhtiyaç Kredisi açıklaması buraya gelecek. <a href="#">Hemen Başvur</a></p>
+                    <img src="https://assets.yapikredi.com.tr/WebSite/_assets_responsive/img/apply-now-bireysel-ihtiyac-kredisi-basvur.png" alt="Bireysel İhtiyaç Kredisi">
+                </div>
+            </div>
+        </div>
+        <div class="box" onclick="window.location.href='/bireysel-bankacilik/odemeler-ve-hizmetler/sgk-emekli-maas-promosyonu'">
+            <h3>Elektrik Faturası</h3>
+            <a href="https://www.yapikredi.com.tr/odeme-merkezi/elektrik-faturasi-odeme">elektrik-faturasi-odeme</a>
+        </div>
+        <div class="box" onclick="window.location.href='/sinirsiz-bankacilik/mobil-bankacilik/uygulama-marketi'">
+            <h3>Su Faturası</h3>
+            <a href="https://www.yapikredi.com.tr/odeme-merkezi/su-odeme">su-faturasi-odeme</a>
+        </div>
+        <div class="box" onclick="window.location.href='/mevduat-urunleri/vadesiz-mevduat'">
+            <h3>Doğal Gaz Faturası</h3>
+            <a href="https://www.yapikredi.com.tr/odeme-merkezi/dogalgaz-odeme">dogalgaz-faturasi-odeme</a>
+        </div>
+        <div class="box" onclick="window.location.href='/mevduat-urunleri/e-mevduat'">
+            <h3>Cep Telefonu Faturası</h3>
+            <a href="https://www.yapikredi.com.tr/odeme-merkezi/cep-telefonu-faturasi-odeme/">cep-telefonu-faturası</a>
+        </div>
+        <div class="box" onclick="window.location.href='/yapi-kredi-hakkinda/'">
+            <h3>Telekom Faturası</h3>
+            <a href="https://www.yapikredi.com.tr/odeme-merkezi/telekom-odeme">telekom-odeme</a>
+        </div>
+        <div class="box" onclick="window.location.href='/yapi-kredi-hakkinda/'">
+            <h3>MTV Borcu</h3>
+            <a href="https://www.yapikredi.com.tr/odeme-merkezi/mtv-odeme">mtv-odeme</a>
+        </div>
+        <section class="become-a-customer even d-none d-lg-block">
+            <div class="container p-lg-0">
+                <h3>Şimdi Yapı Kredili Olun</h3>
+                <p>Uygulama hemen cebinize gelsin, şubeye gitmeden kolayca Yapı Kredili olun!</p>
+                <div class="row">
+                    <div class="col-8">
+                        <div class="box appindir">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h3>Uygulamayı İndir</h3>
+                                </div>
+                                <div class="col-6">
+                                    <h4>QR Kod ile İndir</h4>
+                                    <p>Aşağıdaki QR kodu cihazınızdaki QR kod okuyucusu ile okutarak cihazınıza uygun Yapı Kredi Mobil'i anında yükleyebilirsiniz.</p>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="qrbox">
+                                                <img src="https://assets.yapikredi.com.tr/WebSite/_assets_responsive/img/qr.png" class="lazyload" alt="Qr Code" />
+                                            </div>
+                                        </div>
+                                        <div class="col-12 mobile-app-box">
+                                            <a href="https://itunes.apple.com/tr/app/yap-kredi-mobil-bankac-l-k/id458627086?mt=8" class="mobile-app" title="App Store">
+                                                <img src="https://assets.yapikredi.com.tr/WebSite/_assets_responsive/img/app-store.png" class="img-fluid" alt="App Store" /></a>
+                                            <a href="https://play.google.com/store/apps/details?id=com.ykb.android&hl=tr&gl=US" class="mobile-app" title="Mobile App">
+                                                <img src="https://assets.yapikredi.com.tr/WebSite/_assets_responsive/img/google-play.png" class="img-fluid" alt="Mobile App" /></a>
+                                            <a href="https://appgallery.huawei.com/#/app/C101430581" class="mobile-app" title="App Gallery">
+                                                <img src="https://assets.yapikredi.com.tr/WebSite/_assets_responsive/img/app-gallery.png" class="img-fluid" alt="App Gallery" /></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <h4 class="sms-title">SMS Linki ile İndir</h4>
+                                    <p class="sub-title">Cep telefonu numaranızı ve güvenlik kodunu yazıp SMS Gönder'e tıklayın, uygulama yükleme linki SMS olarak cep telefonunuza gelsin.</p>
+                                    <div class="content-block">
+                                        <div class="form-group">
+                                            <label for="cell-phone-number" class="ml-0">Cep Telefonu Numarası</label>
+                                            <div class="slider-wrap row align-items-center">
+                                                <div class="col-12">
+                                                    <div class="inputContainer">
+                                                        <input type="tel" id="txtTel" autocomplete="off" name="txtTel" maxlength="15" class="onlyNumber form-control form-control-m text-input" placeholder="0 (555) 555 55 55">
+                                                    </div>
+                                                    <div class="bireysel-valid rounder pie_hover">
+                                                        <span class="errorContainer bg-none sttc">
+                                                            <span class="error rounder">Lütfen "Cep Telefonu Numarası" hanesini doldurunuz.</span></span>
+                                                        <span class="errorContainer bg-none wrong">
+                                                            <span class="error rounder">Lütfen "Cep Telefonu Numaranızı" kontrol ediniz.</span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <label for="txtTel" class="ml-0">Güvenlik Kodu</label>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="inputContainer i-captcha fl">
+                                                        <input type="text" id="ctl00_ContentPlaceHolder1_ctrlWriteToUsCaptcha" name="ctl00_ContentPlaceHolder1_ctrlWriteToUsCaptcha" class="onlyNumber form-control form-control-m mb-0" maxlength="6" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 p-md-0">
+                                                    <div class="imagePlaceHolder captcha-cont d-flex">
+                                                        <img id="ctl00_cphHomePage_CaptcaImageControl1" class="bireyselCaptcha pr10 fl" onclick="this.src=&#39;/Captcha.ashx?cd=NjIwQzdENDgwQUUxRUI4RkI1NEE4RTg3RDcyRDY0QUM4QkEyRjYwRUJBRDQ2NkJFMjZBQkQ5QkFEMTRDMTcwNUE0RTdBMzc2MzhDRTgxN0NDRTA5MkI3MUQ5MERDRDRFMEUyNzAwOUUwRjVBNjE2NjdGNEI5NENGMEZDNzUyNDFGM0YwMzBFNDc1QTIzQjQ5REE4QzJGNzBBMkU5RkVCQjE2ODNBMTM4Njc0MjU3RDk=&amp;date=&#39;+(new Date()).getTime();" src="Captcha.ashx?cd=NjIwQzdENDgwQUUxRUI4RkI1NEE4RTg3RDcyRDY0QUM4QkEyRjYwRUJBRDQ2NkJFMjZBQkQ5QkFEMTRDMTcwNUE0RTdBMzc2MzhDRTgxN0NDRTA5MkI3MUQ5MERDRDRFMEUyNzAwOUUwRjVBNjE2NjdGNEI5NENGMEZDNzUyNDFGM0YwMzBFNDc1QTIzQjQ5REE4QzJGNzBBMkU5RkVCQjE2ODNBMTM4Njc0MjU3RDk=" alt="Capcha" style="height:35px;width:110px;" />
+                                                        <a href="javascript:;" class="refreshCaptcha ghosthomepage" title="Refresh"><span class="icon-refresh"></span></a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="bireysel-valid-captcha pie_hover">
+                                                        <span class="errorContainer blank bg-none">
+                                                            <span class="error rounder">Lütfen "Güvenlik Kodu" hanesini doldurunuz.</span></span>
+                                                        <span class="errorContainer wrong bg-none">
+                                                            <span class="error rounder">Lütfen girdiğiniz güvenlik kodunu kontrol ediniz.</span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="buton-submit-content" class="submit-red col-12 p-0">
+                                            <a href="javascript:;" class="btn btn-dark-blue sms-gonder w-100" title="SMS Gönder">SMS Gönder</a>
+                                        </div>
+                                    </div>
+                                    <div class="success-sms">
+                                        <div class="success-block">
+                                            <h2 class="success-title">SMS linki telefonunuza gönderildi.</h2>
+                                            <p>
+                                                Telefonunuza gelen mesajdaki linke tıklayarak Yapı Kredi Mobil uygulamasını indirin, "Yapı Kredi Müşterisi Ol" butonuna tıklayın ve yönlendirmeleri takip edin.
+                                            </p>
+                                        </div>
+                                        <div class="success-btn-area">
+                                            <span class="resendtext">SMS ulaşmadı mı? </span>
+                                            <p class="resend-btn"><a href="javascript:;" title="Tekrar Gönder">Tekrar Gönder</a></p>
+                                            <div id="return-form-content" class="submit-red col-xs-12">
+                                                <a href="javascript:;" class="btn btn-danger" title="Geri Dön">Geri Dön</a>
+                                            </div>
+    
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="box">
+                            <div>
+                                <h3>Uygulamayı İndirdikten Sonra</h3>
+                                <h4>Videoyu İzle</h4>
+                                <p>“Yapı Kredi Müşterisi Ol” menüsüne tıklayarak bilgilerinizi girin ve Görüntülü işlem Asistan’ı ile bilgilerinizi doğrulayın.</p>
+                            </div>
+                            <a href="javascript:;" class="nasil-yapilir" title="Play">
+                                <img src="https://assets.yapikredi.com.tr/WebSite/_assets_responsive/img/play-button.png" alt="Play Button" class="playbtn" />
+                                <span class="overlay"></span>
+                                <img src="https://assets.yapikredi.com.tr/WebSite/_assets_responsive/img/nasil-yapilir.png" alt="Nasıl Yapılır" class="img-fluid lazyload" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+               
+                
+        
+
+        <div class="bottom-section clearfix">
+            <div class="col">
+                <h3>İlginizi Çekebilir</h3>
+                <ul>
+                    <li><a href="https://www.yapikredi.com.tr/bireysel-bankacilik/odemeler-ve-hizmetler/sgk-emekli-maas-promosyonu">Emekli Promosyon</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/sinirsiz-bankacilik/mobil-bankacilik/uygulama-marketi">Uygulama Marketi</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/mevduat-urunleri/vadesiz-mevduat">Vadesiz Mevduat</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/mevduat-urunleri/e-mevduat">Vadeli Mevduat</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/yapi-kredi-hakkinda//">Yapı Kredi Hakkında</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/yapi-kredi-hakkinda/surdurulebilirlik/">Sürdürülebilirlik</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/yapi-kredi-hakkinda/haberler" target="_blank">Haberler</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/yapi-kredi-hakkinda/basin-bultenleri">Basın Bültenleri</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/yapi-kredi-hakkinda/insan-kaynaklari/">İnsan Kaynakları</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/bireysel-bankacilik/odemeler-ve-hizmetler/eyt-emeklilikte-yasa-takilanlar">EYT</a></li>
+                </ul>
+            </div>
+            <div class="col">
+                <h3>Yatırım & Finans</h3>
+                <ul>
+                    <li><a href="https://www.yapikredi.com.tr/yatirimci-kosesi/doviz-bilgileri">Canlı Döviz</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/bireysel-bankacilik/yatirim-urunleri/yatirim-fonlari/">Yatırım Fonları</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/bireysel-bankacilik/mevduat-urunleri/altin-mevduati">Altın Mevduat</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/yatirimci-kosesi/altin-bilgileri">Altın</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/bireysel-bankacilik/yatirim-urunleri/hisse-senetleri/hisse-senedi-halka-arz">Halka Arz</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/yatirimci-kosesi/hisse-senedi-bilgileri">Hisse Senedi</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/yatirimci-kosesi/vadeli-mevduat-oranlari">Vadeli Mevduat Oranları</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/yatirimci-kosesi/doviz-bilgileri?section=foreign">Yurt Dışı Piyasaları</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/yatirimci-kosesi/">Yatırımcı Köşesi</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/bireysel-bankacilik/hesaplama-araclari/doviz-hesaplama">Dolar Kaç TL</a></li>
+                </ul>
+            </div>
+            <div class="col">
+                <h3>Kartlar & Başvurular</h3>
+                <ul>
+                    <li><a href="https://www.yapikredi.com.tr/banka-hesabi-ac">Banka Hesabı Aç</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/ticari-hesap-acma">Ticari Hesap Aç</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/basvuru-merkezi/kredi-karti-basvurusu">Kredi Kartı Başvuru</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/bireysel-bankacilik/kartlar/banka-kartlari/">Banka Kartı</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/kartlar/kredi-kartlari/">Kredi Kartı</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/kartlar/kredi-kartlari/worldcard">Worldcard</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/isletme/ticari-kartlar/">Ticari Kartlar</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/bireysel-bankacilik/kartlar/akdi-ve-gecikme-faizi-hesaplama-ornekleri">Kredi Kartı Asgari Hesaplama</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/basvuru-merkezi/kredili-duzenli-odeme-sistemi">Kredili Düzenli Ödeme Sistemi</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/basvuru-merkezi/kiram-hesabimda">Kiram Hesabımda</a></li>
+                </ul>
+            </div>
+            <div class="col">
+                <h3>Krediler</h3>
+                <ul>
+                    <li><a href="https://www.yapikredi.com.tr/kredi/konut-kredisi/">Konut Kredisi</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/kredi/ihtiyac-kredisi/">İhtiyaç Kredisi</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/bireysel-bankacilik/krediler/">Kredi</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/bireysel-bankacilik/krediler/tasit-kredisi/">Taşıt Kredisi</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/basvuru-merkezi/bireysel-ihtiyac-kredisi">Kredi Başvurusu</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/kredi/ihtiyac-kredisi/3-ay-ertelemeli-ihtiyac-kredisi">3 Ay Ertelemeli Kredi</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/bireysel-bankacilik/krediler/esnek-hesap/">Esnek Hesap/Kredili Mevduat Hesabı</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/kredi/ihtiyac-kredisi/sgk-prim-borcuna-ozel-ihtiyac-kredisi">EYT Kredisi</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/kredi/ihtiyac-kredisi/alisveris-kredisi/">Alışveriş Kredisi</a></li>
+                                <li><a href="https://www.yapikredi.com.tr/bireysel-bankacilik/krediler/tasit-kredisi/doga-dostu-tasit-kredisi">Elektrikli Araç Kredisi</a></li>
+                </ul>
+            </div>
+            <div class="col">
+                <h3>Faydalı Sayfalar</h3>
+                <ul>
+                    <li><a href="https://www.yapikredi.com.tr/bireysel-bankacilik/hesaplama-araclari/kredi-hesaplama">Kredi Hesaplama</a></li>
+                    <li><a href="https://www.yapikredi.com.tr/bireysel-bankacilik/hesaplama-araclari/doviz-hesaplama">Döviz Hesaplama</a></li>
+                    <li><a href="https://www.yapikredi.com.tr/bireysel-bankacilik/hesaplama-araclari/e-mevduat-faizi-hesaplama">Mevduat Hesaplama</a></li>
+                    <li><a href="https://www.yapikredi.com.tr/odeme-merkezi/">Fatura Ödeme</a></li>
+                    <li><a href="https://www.yapikredi.com.tr/bireysel-bankacilik/odemeler-ve-hizmetler/hizli-gecis-sistemi">HGS</a></li>
+                    <li><a href="https://www.yapikredi.com.tr/odeme-merkezi/mtv-odeme">MTV Ödeme</a></li>
+                    <li><a href="https://www.yapikredi.com.tr/bireysel-bankacilik/sigorta-ve-emeklilik/zorunlu-trafik-sigortalari">Trafik Sigortası</a></li>
+                    <li><a href="https://www.yapikredi.com.tr/bireysel-bankacilik/sigorta-ve-emeklilik/kasko-sigortalari">Kasko</a></li>
+                    <li><a href="https://www.yapikredi.com.tr/memnuniyetiniz-icin-buradayiz/sikca-sorulan-sorular/">Sıkça Sorulan Sorular</a></li>
+                    <li><a href="https://www.yapikredi.com.tr/site-haritasi">Site Haritası</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <footer>
+        <div class="footer-container">
+
+            <div class="footer-left">
+                <p>&copy; 2024 Yapı ve Kredi Bankası. Tüm hakları saklıdır.</p>
+            </div>
+            <div class="footer-right">
+                <nav>
+                    <ul>
+
+                        <li><a href="#">Gizlilik Politikası</a></li>
+                        <li><a href="#">Kullanım Koşulları</a></li>
+                        <li><a href="#">Çerez Politikası</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <button><i class="fa-brands fa-linkedin"></i>   <a href="https://www.instagram.com/yapikredi/"class="icon-link" target="_blank"></button>
+            <button><i class="fa-brands fa-youtube"></i>   <a href="https://www.youtube.com/channel/UCnAFL68slzVjJkOiNHweojQ"class="icon-link" target="_blank"></button>
+            <button><i class="fa-brands fa-facebook-f"></i>  <a href="https://www.youtube.com/channel/UCnAFL68slzVjJkOiNHweojQ"class="icon-link" target="_blank"></button>
+            <button><i class="fa-brands fa-instagram"></i> <a href="https://x.com/YapiKredi"class="icon-link" target="_blank"></button>
+    </footer>
+    <script>
+         let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        let slides = document.getElementsByClassName("slides")[0].getElementsByTagName("img");
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}
+        slides[slideIndex-1].style.display = "block";
+        setTimeout(showSlides, 3000);
+    }
+
+    function plusSlides(n) {
+        slideIndex += n - 1;
+        showSlides();
+    }
+
+        document.getElementById("search-container").addEventListener("submit", function(event) {
+            event.preventDefault(); // Form submitini engelle
+
+            var query = document.getElementById("search").value.trim();
+            var searchResults = document.getElementById("searchResults");
+
+            if (query === "") {
+                searchResults.innerHTML = "<p>Arama yapmak için bir kelime girin.</p>";
+                return;
+            }
+
+            // Simüle edilmiş sonuçlar
+            var results = [
+                { title: "Bireysel Krediler", url: "https://www.yapikredi.com.tr/bireysel-bankacilik/krediler/" },
+                { title: "Kredi Kartları", url: "https://www.yapikredi.com.tr/bireysel-bankacilik/kartlar/" },
+                { title: "Bireysel Yatırımlar", url: "https://www.yapikredi.com.tr/bireysel-bankacilik/yatirim-urunleri/" },
+                { title: "Mevduat Hesapları", url: "https://www.yapikredi.com.tr/bireysel-bankacilik/mevduat-urunleri/" }
+            ];
+
+            // Arama sonuçlarını göster
+            var resultHTML = "<p>Arama sonuçları:</p>";
+            results.forEach(function(result) {
+                resultHTML += "<a href='" + result.url + "' target='_blank'>" + result.title + "</a>";
+            });
+
+            searchResults.innerHTML = resultHTML;
+        });
+    </script>
+
+</body>
+</html>
